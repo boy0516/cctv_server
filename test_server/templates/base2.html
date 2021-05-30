@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>잡았다요놈!</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link
+      href="{{url_for('static', filename='css/sb-admin-2.min.css')}}"
+      rel="stylesheet"
+    />
+
+    <link
+      href="{{url_for('static', filename='css/main.css')}}"
+      rel="stylesheet"
+    />
+
+    <script>
+      var values = {{ values| tojson}};
+    </script>
+    {% block ajax %}
+    {% endblock %}
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul
+        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
+        <!-- Sidebar - Brand -->
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="/"
+        >
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">잡았다요놈! <sup>^^</sup></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>학교폭력현황</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Heading -->
+        <div class="sidebar-heading">CCTV 모니터링</div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="true"
+            aria-controls="collapseTwo"
+          >
+            <i class="fas fa-fw fa-cog"></i>
+            <span>모니터링</span>
+          </a>
+          <div
+            id="collapseTwo"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">모니터링:</h6>
+              <a
+                class="collapse-item"
+                href="/streaming?cctv={{values.cctv_name}}"
+                >실시간 스트리밍</a
+              >
+              <a class="collapse-item" href="/cctvmap?cctv={{values.cctv_name}}"
+                >CCTV지도</a
+              >
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>CCTV기록</span>
+          </a>
+          <div
+            id="collapseUtilities"
+            class="collapse"
+            aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">CCTV기록</h6>
+              <a
+                class="collapse-item"
+                href="/cctvpost?cctv={{values.cctv_name}}"
+                >CCTV기록</a
+              >
+            </div>
+          </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Heading -->
+        <div class="sidebar-heading">좋은 학교 지도 </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <i class="fas fa-fw fa-folder"></i>
+            <span>15-Pages</span>
+          </a>
+          <div
+            id="collapsePages"
+            class="collapse"
+            aria-labelledby="headingPages"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">16-Login Screens:</h6>
+              <a class="collapse-item" href="/first_map">17-Login</a>
+              <a class="collapse-item" href="register.html">18-Register</a>
+              <a class="collapse-item" href="forgot-password.html"
+                >19-Forgot Password</a
+              >
+              <div class="collapse-divider"></div>
+              <h6 class="collapse-header">20-Other Pages:</h6>
+              <a class="collapse-item" href="404.html">21-404 Page</a>
+              <a class="collapse-item" href="blank.html">22-Blank Page</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+          <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>23-Charts</span></a
+          >
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+          <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>24-Tables</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block" />
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+        <!-- Sidebar Message -->
+      </ul>
+      <!-------------------------------- End of Sidebar ---------------------------------------->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="
+              navbar navbar-expand navbar-light
+              bg-white
+              topbar
+              mb-4
+              static-top
+              shadow
+            "
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Search -->
+            {% block searchfrom %}
+            <form
+              class="
+                d-none d-sm-inline-block
+                form-inline
+                mr-auto
+                ml-md-3
+                my-2 my-md-0
+                mw-100
+                navbar-search
+              "
+              action="{{ url_for('cctv_detail') }}"
+            >
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control bg-light border-0 small"
+                  list="cctv_list"
+                  placeholder="221-CCTV위치검색"
+                  name="cctv"
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                  autocomplete="off"
+                />
+                <datalist id="cctv_list"> </datalist>
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+            {% endblock %}
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="searchDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div
+                  class="
+                    dropdown-menu dropdown-menu-right
+                    p-3
+                    shadow
+                    animated--grow-in
+                  "
+                  aria-labelledby="searchDropdown"
+                >
+                  {% block searchfromM %}
+                  <form
+                    class="form-inline mr-auto w-100 navbar-search"
+                    action="{{ url_for('cctv_detail') }}"
+                  >
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control bg-light border-0 small"
+                        list="cctv_list"
+                        placeholder="모바일Search for..."
+                        name="cctv"
+                        aria-label="Search"
+                        aria-describedby="basic-addon2"
+                        autocomplete="off"
+                      />
+                      <datalist id="cctv_list"> </datalist>
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  {% endblock %}
+                </div>
+              </li>
+              <div class="navbar-form navbar-right">
+                <button id="user-profile" class="btn btn-default">
+                  <img id="profilepicture" />&nbsp;<span
+                    id="profilename"
+                  ></span>
+                </button>
+                <button id="auth0-login" class="btn btn-success" onclick = "location.href = '/'">
+                  Sign in
+                </button>
+                <button id="auth0-logout" class="btn btn-success" onclick = "location.href ='/'">
+                  Sign out
+                </button>
+              </div>
+            </ul>
+          </nav>
+        </div>
+        <!-------------------------------------------------- End of Topbar --------------------------------------------------------->
+        {% block content %}
+        <div id="content"></div>
+        {% endblock %}
+        <!--------------------------------------------------- Footer ---------------------------------------------------------------->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>107-Copyright &copy; 108-Your Website 2021</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              109-Ready to Leave?
+            </h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            110-Select "Logout" below if you are ready to end your current
+            session.
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              111-Cancel
+            </button>
+            <a class="btn btn-primary" href="/login">112-Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function setStockList(datalist) {
+        var cctv_list = values.cctv_list;
+        for (let i in cctv_list) {
+          datalist.innerHTML +=
+            "<option value='" + cctv_list[i].cctvname + "''>";
+        }
+      }
+      datalist = document.getElementById("cctv_list");
+      setStockList(datalist);
+    </script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="static/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="static/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script>
+      // Set new default font family and font color to mimic Bootstrap's default styling
+
+      function number_format(number, decimals, dec_point, thousands_sep) {
+        // *     example: number_format(1234.56, 2, ',', ' ');
+        // *     return: '1 234,56'
+        number = (number + "").replace(",", "").replace(" ", "");
+        var n = !isFinite(+number) ? 0 : +number,
+          prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+          sep = typeof thousands_sep === "undefined" ? "," : thousands_sep,
+          dec = typeof dec_point === "undefined" ? "." : dec_point,
+          s = "",
+          toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return "" + Math.round(n * k) / k;
+          };
+        // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+        s = (prec ? toFixedFix(n, prec) : "" + Math.round(n)).split(".");
+        if (s[0].length > 3) {
+          s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+        }
+        if ((s[1] || "").length < prec) {
+          s[1] = s[1] || "";
+          s[1] += new Array(prec - s[1].length + 1).join("0");
+        }
+        return s.join(dec);
+      }
+      
+      // Area Chart Example
+      var ctx = document.getElementById("myAreaChart");
+      var myLineChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun"],
+          datasets: [
+            {
+              label: "발생횟수",
+              lineTension: 0.3,
+              backgroundColor: "rgba(78, 115, 223, 0.05)",
+              borderColor: "rgba(78, 115, 223, 1)",
+              pointRadius: 3,
+              pointBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointBorderColor: "rgba(78, 115, 223, 1)",
+              pointHoverRadius: 3,
+              pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+              pointHitRadius: 10,
+              pointBorderWidth: 2,
+              data: {{values.week_count}},
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          layout: {
+            padding: {
+              left: 10,
+              right: 25,
+              top: 25,
+              bottom: 0,
+            },
+          },
+          scales: {
+            xAxes: [
+              {
+                time: {
+                  unit: "date",
+                },
+                gridLines: {
+                  display: false,
+                  drawBorder: false,
+                },
+                ticks: {
+                  maxTicksLimit: 7,
+                },
+              },
+            ],
+            yAxes: [
+              {
+                ticks: {
+                  maxTicksLimit: 5,
+                  padding: 10,
+                  // Include a dollar sign in the ticks
+                  callback: function (value, index, values) {
+                    return "" + number_format(value);
+                  },
+                },
+                gridLines: {
+                  color: "rgb(234, 236, 244)",
+                  zeroLineColor: "rgb(234, 236, 244)",
+                  drawBorder: false,
+                  borderDash: [2],
+                  zeroLineBorderDash: [2],
+                },
+              },
+            ],
+          },
+          legend: {
+            display: false,
+          },
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            titleMarginBottom: 10,
+            titleFontColor: "#6e707e",
+            titleFontSize: 14,
+            borderColor: "#dddfeb",
+            borderWidth: 1,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            intersect: false,
+            mode: "index",
+            caretPadding: 10,
+            callbacks: {
+              label: function (tooltipItem, chart) {
+                var datasetLabel =
+                  chart.datasets[tooltipItem.datasetIndex].label || "";
+                return datasetLabel + ": " + number_format(tooltipItem.yLabel);
+              },
+            },
+          },
+        },
+      });
+    </script>
+    <script>
+      // Set new default font family and font color to mimic Bootstrap's default styling
+
+
+      // Pie Chart Example
+      var ctx = document.getElementById("myPieChart");
+      var myPieChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["폭행", "흡연", "싸움"],
+          datasets: [
+            {
+              data: [{{values.assault}}, {{values.smoke}}, 0],
+              backgroundColor: ["#4e73df", "#1cc88a", "#36b9cc"],
+              hoverBackgroundColor: ["#2e59d9", "#17a673", "#2c9faf"],
+              hoverBorderColor: "rgba(234, 236, 244, 1)",
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            borderColor: "#dddfeb",
+            borderWidth: 1,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            caretPadding: 10,
+          },
+          legend: {
+            display: false,
+          },
+          cutoutPercentage: 80,
+        },
+      });
+    </script>
+    <script></script>
+    <script src="https://cdn.auth0.com/js/lock/11.27/lock.min.js"></script>
+    <script src="static/js/user-controller.js"></script>
+    <script src="static/js/config.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

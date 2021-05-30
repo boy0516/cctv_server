@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{values.cctv_name}}현황</h1>
+  </div>
+</div>
+<!-- /.container-fluid -->
+<video controls="" autoplay="" name="media" width="700">
+  <source src="{{values.url}}" type="video/mp4" />
+</video>
+
+<!-- End of Main Content -->
+{% endblock %}

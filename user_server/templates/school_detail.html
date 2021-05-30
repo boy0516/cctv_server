@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>1-Stylish Portfolio - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='assets/favicon.ico')}}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Simple line icons-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+        <link href="{{url_for('static', filename='css/searchbar.css')}}" rel="stylesheet" />
+            
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+        <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+        <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+        
+                <meta name="viewport" content="width=device-width,
+                    initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+                <style>
+                    #map_9f91168034e6418f92011ce4411e0903 {
+                        position: relative;
+                        width: 100.0%;
+                        height: 100.0%;
+                        left: 0.0%;
+                        top: 0.0%;
+                    }
+                </style>
+                <style>
+                    #about {
+                        min-height: 80rem;
+                    }
+                    #about-1 {
+                        min-height: 60rem;
+                    }
+                    #about-2 {
+                        min-height: 50rem;
+                    }
+                </style>
+            
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper" style="z-index: 2;">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="#page-top">잡았다요놈</a></li>
+                <li class="sidebar-nav-item"><a href="#page-top">3-Home</a></li>
+                <li class="sidebar-nav-item"><a href="#about">4-About</a></li>
+                <li class="sidebar-nav-item"><a href="#services">5-Services</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">6-Portfolio</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">7-Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Header-->
+        <header class="masthead d-flex align-items-center">
+            <div class="container px-4 px-lg-5 text-center">
+                <h1 class="mb-1">잡았다요놈!</h1>
+                <h3 class="mb-5"><em>서울특별시학교폭력지수</em></h3>
+                <a class="btn btn-primary btn-xl" href="#about">폭력지수 지도보기</a>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center" id="about-1">
+                
+                <div class="row px-4 px-lg-5 justify-content-center" id="about-2">
+                    <div class="col-lg-10">
+                        
+                        <h2>폭력지수 상위10개/하위10개 학교</h2>
+                        
+                        <a class="btn btn-dark btn-xl" href="#services">폭력지수란?</a>
+                        <p></p>
+                        <div class="folium-map" style="z-index: 1;" id="map_9f91168034e6418f92011ce4411e0903" ></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="content-section bg-primary text-white text-center" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h2 class="mb-5">폭력지수란?</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
+                        <h4><strong>17-Responsive</strong></h4>
+                        <p class="text-faded mb-0">18-Looks great on any screen size!</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                        <h4><strong>19-Redesigned</strong></h4>
+                        <p class="text-faded mb-0">20-Freshly redesigned for Bootstrap 5.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
+                        <h4><strong>21-Favorited</strong></h4>
+                        <p class="text-faded mb-0">
+                            22-Millions of users
+                            <i class="fas fa-heart"></i>
+                            23-Start Bootstrap!
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
+                        <h4><strong>24-Question</strong></h4>
+                        <p class="text-faded mb-0">25-I mustache you a question...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Callout-->
+        <section class="callout">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mx-auto mb-5" style="max-width:70rem;">
+                    <P>폭력지수가 낮은 학교가 궁금하신가요?</P>
+                    <p>지금 다운로드 하세요!</p>
+                </h2>
+                <a class="btn btn-primary btn-xl" href="https://yangjae-team05-s3.s3.eu-central-1.amazonaws.com/school_csv/top20.csv">28-Download Now!</a>
+            </div>
+        </section>
+        <!-- Portfolio-->
+        <section class="content-section" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                    <h2 class="mb-5" style="color: aliceblue; padding-bottom: 15px;">우리학교의 폭력지수는?</h2>
+                    
+                </div>
+                <div class="row gx-0">
+                    <div class="col-lg-12">
+                        <form action="{{url_for('school_detail')}}">
+                        <div class="search-wrapper">
+                            <div class="input-holder">
+                                <input type="text" class="search-input"
+                                name="school"
+                                placeholder="Type to search" />
+                                <button class="search-icon" onclick="searchToggle(this, event);" type="submit"><span></span></button>
+                            </div>
+                            <span class="close" onclick="searchToggle(this, event);"></span>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Call to Action-->
+        <section class="content-section bg-primary text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4">더 많은 서비스를 원하신다면...</h2>
+                <a class="btn btn-xl btn-light me-4" href="#!">로그인</a>
+                <a class="btn btn-xl btn-dark" href="#!">회원가입</a>
+                <a href="#" class="btn btn-success" onclick="stockSell()">팝업창 테스트</a>
+
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted small mb-0">42-Copyright &copy; Your Website 2021</p>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    </body>
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<script>
+    function stockSell(){
+      
+        window.open('#','name','resizable=no width=600 height=500');return false;
+        }
+</script>
+
+<script>
+	function searchToggle(obj, evt){
+    var container = $(obj).closest('.search-wrapper');
+        if(!container.hasClass('active')){
+            container.addClass('active');
+            evt.preventDefault();
+        }
+        else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+            container.removeClass('active');
+            // clear input
+            container.find('.search-input').val('');
+        }
+}
+</script>
+</html>
