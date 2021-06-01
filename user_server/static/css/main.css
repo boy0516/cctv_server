@@ -1,0 +1,13 @@
+#auth0-logout {
+  display: none;
+}
+#user-profile {
+  display: none;
+}
+#profilepicture {
+  height: 50px;
+  width: 50px;
+}
+#loginContent-hide{
+  display: none;
+}
