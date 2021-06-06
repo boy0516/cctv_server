@@ -1,0 +1,20 @@
+FROM python:3.7.9-stretch
+
+RUN mkdir /video
+RUN pip install requests
+RUN pip install jsons
+RUN pip install pymysql
+RUN pip install python-consul
+RUN pip install threaded
+RUN apt-get update
+RUN apt-get install ffmpeg -y
+RUN apt-get -y install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libx11-dev libxext-dev libxfixes-dev pkg-config texi2html zlib1g-dev
+RUN apt-get install libgl1-mesa-glx -y
+RUN pip install opencv-python
+RUN pip install supyr-struct
+RUN pip install structure
+
+COPY server6-1.py ./stream_server.py
+COPY net_socket.py ./net_socket.py
+
+CMD ["python", "stream_server.py"]

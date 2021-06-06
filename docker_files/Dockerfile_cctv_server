@@ -1,0 +1,15 @@
+FROM python:3.7.9-stretch
+
+RUN pip install requests
+RUN pip install jsons
+RUN pip install pymysql
+RUN pip install python-consul
+RUN pip install threaded
+RUN pip install Flask
+RUN pip install Flask-RESTful
+RUN pip install Flask-JWT-Extended
+RUN pip install Flask-Cors
+
+COPY ./cctv_server ./cctv_server
+WORKDIR /cctv_server
+CMD ["python", "run.py"]

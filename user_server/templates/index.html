@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>잡았다요놈<!DOCTYPE html></title>
+    <title>잡았다요놈</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}"/>
     <!-- Font Awesome icons (free version)-->
@@ -86,7 +86,7 @@
         var values = {{ values| tojson}};
     </script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" style="width: 100%;"></script>
     <script>
         $.get("{{url_for('static',filename='assets/school.json')}}",	// 서버가 필요한 정보를 같이 보냄.
             function (data) {
@@ -130,12 +130,12 @@
     </ul>
 </nav>
 <!-- Header-->
-<header class="masthead d-flex">
-    <div class="center">
-        <h1 class="main">서울시 고등학교 학교폭력지수</h1>
-    </div>
+<header class="masthead2 ">
 </header>
-
+<header class="masthead ">
+</header>
+<header class="masthead2 ">
+</header>
 <!-- About-->
 <section class="content-section bg-light" id="about">
     <div class="container px-4 px-lg-5 text-center" id="about-1">
@@ -171,13 +171,13 @@
         </h2>
         <div id="loginContent-hide">
             <a class="btn btn-orange btn-xl"
-               href="https://yangjae-team05-s3.s3.eu-central-1.amazonaws.com/school_csv/top20.csv">상위20개 학교 다운로드</a>
+               href="https://yangjae-team05-s3.s3.eu-central-1.amazonaws.com/school_csv/top30_fordownload.xlsx">상위30개 학교 다운로드</a>
             <p></p>
             <a class="btn btn-orange btn-xl "
-               href="https://yangjae-team05-s3.s3.eu-central-1.amazonaws.com/school_csv/top20.csv">하위20개 학교 다운로드</a>
+               href="https://yangjae-team05-s3.s3.eu-central-1.amazonaws.com/school_csv/low30_fordownload.xlsx">하위30개 학교 다운로드</a>
             <p></p>
             <a class="btn btn-orange btn-xl "
-               href="https://yangjae-team05-s3.s3.eu-central-1.amazonaws.com/school_csv/top20.csv">모든학교 다운로드</a>
+               href="https://yangjae-team05-s3.s3.eu-central-1.amazonaws.com/school_csv/Web_upload.xlsx">모든학교 다운로드</a>
         </div>
 
     </div>

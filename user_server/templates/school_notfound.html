@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>잡았다요놈!</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+            href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}"
+            rel="stylesheet"
+            type="text/css"
+    />
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link
+            href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}"
+            rel="stylesheet"
+    />
+
+    <link href="{{ url_for('static', filename='css/sb-addon.css') }}" rel="stylesheet">
+
+    <script>
+        var values = {{ values| tojson}};
+    </script>
+
+    <meta charset="utf-8"/>
+
+    
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}"/>
+    <!-- Font Awesome icons (free version)-->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    <script>
+        $.get("{{values.cctv_server_host}}log/month?cctv={{values.school}}",	// 서버가 필요한 정보를 같이 보냄.
+            function (data) {
+                $("#monthtext").html(data["log_count"] + "회");	// 전송받은 데이터와 전송 성공 여부를 보여줌.
+            }
+        );
+    </script>
+    <script>
+        $.get("{{values.cctv_server_host}}log/day?cctv={{values.school}}",	// 서버가 필요한 정보를 같이 보냄.
+            function (data) {
+                $("#daytext").html(data["log_count"] + "회");	// 전송받은 데이터와 전송 성공 여부를 보여줌.
+            }
+        );
+    </script>
+    <script>
+        $.get("{{values.school_server_host}}data?school={{values.school}}",	// 서버가 필요한 정보를 같이 보냄.
+            function (data) {
+                console.log(data["school_data"][0]["개최횟수"])
+                $("#school_1").html(data["school_data"][0]["개최횟수"] + "회");	
+                $("#school_2").html(data["school_data"][0]['심의건수'] + "회");
+                $("#school_3").html(data["school_data"][0]['학교장_자체해결건수'] + "회");
+                $("#school_4").html(data["school_data"][0]['학교폭력유형_계'] + "회");
+                $("#school_5").html(data["school_data"][0]['피해학생수'] + "명");
+                $("#school_6").html(data["school_data"][0]['가해학생수'] + "명");
+                $("#school_7").html(data["school_data"][0]['선도_교육'] + "회");
+                $("#school_8").html(data["school_data"][0]['학교폭력지수'] );
+                ////////////
+                
+                var latitude = data["school_data"][0]["위도"];
+                var longitude = data["school_data"][0]["경도"];
+
+                var container = document.getElementById('map');
+                var options = {
+                    center: new kakao.maps.LatLng(latitude, longitude),
+                    level: 4,
+                };
+
+                var map = new kakao.maps.Map(container, options);
+
+                    var markerPosition = new kakao.maps.LatLng(latitude, longitude);
+
+                    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+                    var imageSize = new kakao.maps.Size(24, 35);
+
+                    // 마커 이미지를 생성합니다
+                    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        map: map,
+                        position: markerPosition,
+                        image: markerImage
+
+                    });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
+
+
+                ////////////
+
+            }
+        );
+    </script>
+    
+
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+<nav id="sidebar-wrapper" style="z-index: 2;">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="#page-top">잘못된접근!</a></li>
+        <li class="sidebar-nav-item"><a href="javascript:window.close()">창닫기</a></li>
+
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4"
+         style="padding-bottom: 10px; padding-top: 28px;">
+        <h1 class="h3 mb-0 text-gray-800">{{ values.school }} 404</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+
+            <!-- Illustrations -->
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">{{ values.school }} </h6>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                             src="{{ url_for('static', filename='img/undraw_posting_photo.svg') }}" alt="...">
+                    </div>
+                    <p><b>{{ values.school }}</b>는 데이터가 존재하지 않습니다. 정확한 학교명이 맞는지 확인해주세요!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+
+
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i
+                                class="icon-social-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i
+                                class="icon-social-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white" href="#!"><i
+                                class="icon-social-github"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted small mb-0">42-Copyright &copy; Your Website 2021</p>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top" style="z-index: 1;"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </div>
+</div>
+</body>
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<script
+  type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{values.kakaokey}}"
+></script>
+
+<script>
+    function stockSell() {
+
+        window.open('#', 'name', 'resizable=no width=600 height=500');
+        return false;
+    }
+</script>
+
+<script>
+    function searchToggle(obj, evt) {
+        var container = $(obj).closest('.search-wrapper');
+        if (!container.hasClass('active')) {
+            container.addClass('active');
+            evt.preventDefault();
+        } else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
+            container.removeClass('active');
+            // clear input
+            container.find('.search-input').val('');
+        }
+    }
+</script>
+<!-- Bootstrap core JavaScript-->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="static/vendor/chart.js/Chart.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+<!-- Page level custom scripts -->
+<script>
+    // Set new default font family and font color to mimic Bootstrap's default styling
+
+    function number_format(number, decimals, dec_point, thousands_sep) {
+        // *     example: number_format(1234.56, 2, ',', ' ');
+        // *     return: '1 234,56'
+        number = (number + "").replace(",", "").replace(" ", "");
+        var n = !isFinite(+number) ? 0 : +number,
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = typeof thousands_sep === "undefined" ? "," : thousands_sep,
+            dec = typeof dec_point === "undefined" ? "." : dec_point,
+            s = "",
+            toFixedFix = function (n, prec) {
+                var k = Math.pow(10, prec);
+                return "" + Math.round(n * k) / k;
+            };
+        // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+        s = (prec ? toFixedFix(n, prec) : "" + Math.round(n)).split(".");
+        if (s[0].length > 3) {
+            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+        }
+        if ((s[1] || "").length < prec) {
+            s[1] = s[1] || "";
+            s[1] += new Array(prec - s[1].length + 1).join("0");
+        }
+        return s.join(dec);
+    }
+
+    $.get("{{values.cctv_server_host}}log/week?cctv={{values.school}}",	// 서버가 필요한 정보를 같이 보냄.
+        function (data2) {
+            var ctx = document.getElementById("myAreaChart");
+            var myLineChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                    datasets: [
+                        {
+                            label: "발생횟수",
+                            lineTension: 0.3,
+                            backgroundColor: "rgba(78, 115, 223, 0.05)",
+                            borderColor: "rgba(78, 115, 223, 1)",
+                            pointRadius: 3,
+                            pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                            pointBorderColor: "rgba(78, 115, 223, 1)",
+                            pointHoverRadius: 3,
+                            pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                            pointHitRadius: 10,
+                            pointBorderWidth: 2,
+                            data: data2["log_week"],
+                        },
+                    ],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 25,
+                            top: 25,
+                            bottom: 0,
+                        },
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                time: {
+                                    unit: "date",
+                                },
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false,
+                                },
+                                ticks: {
+                                    maxTicksLimit: 7,
+                                },
+                            },
+                        ],
+                        yAxes: [
+                            {
+                                ticks: {
+                                    maxTicksLimit: 5,
+                                    padding: 10,
+                                    // Include a dollar sign in the ticks
+                                    callback: function (value, index, values) {
+                                        return "" + number_format(value);
+                                    },
+                                },
+                                gridLines: {
+                                    color: "rgb(234, 236, 244)",
+                                    zeroLineColor: "rgb(234, 236, 244)",
+                                    drawBorder: false,
+                                    borderDash: [2],
+                                    zeroLineBorderDash: [2],
+                                },
+                            },
+                        ],
+                    },
+                    legend: {
+                        display: false,
+                    },
+                    tooltips: {
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        titleMarginBottom: 10,
+                        titleFontColor: "#6e707e",
+                        titleFontSize: 14,
+                        borderColor: "#dddfeb",
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        intersect: false,
+                        mode: "index",
+                        caretPadding: 10,
+                        callbacks: {
+                            label: function (tooltipItem, chart) {
+                                var datasetLabel =
+                                    chart.datasets[tooltipItem.datasetIndex].label || "";
+                                return datasetLabel + ": " + number_format(tooltipItem.yLabel);
+                            },
+                        },
+                    },
+                },
+            });
+            ;	// 전송받은 데이터와 전송 성공 여부를 보여줌.
+        }
+    );
+
+    // Area Chart Example
+
+</script>
+<script>
+    // Set new default font family and font color to mimic Bootstrap's default styling
+    // Pie Chart Example
+    $.get("{{values.cctv_server_host}}log/count?cctv={{values.school}}",	// 서버가 필요한 정보를 같이 보냄.
+        function (data2) {
+            $("#assaulttext").html("폭행" + data2["assault"]);
+            $("#smoketext").html("흡연" + data2["smoke"]);
+            var ctx = document.getElementById("myPieChart");
+            var myPieChart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                    labels: ["폭행", "흡연", "싸움"],
+                    datasets: [
+                        {
+                            data: [data2["assault"], data2["smoke"], 0],
+                            backgroundColor: ["#4e73df", "#1cc88a", "#36b9cc"],
+                            hoverBackgroundColor: ["#2e59d9", "#17a673", "#2c9faf"],
+                            hoverBorderColor: "rgba(234, 236, 244, 1)",
+                        },
+                    ],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    tooltips: {
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        borderColor: "#dddfeb",
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        caretPadding: 10,
+                    },
+                    legend: {
+                        display: false,
+                    },
+                    cutoutPercentage: 80,
+                },
+            });	// 전송받은 데이터와 전송 성공 여부를 보여줌.
+        }
+    );
+
+</script>
+<script></script>
+<script src="https://cdn.auth0.com/js/lock/11.27/lock.min.js"></script>
+<script src="static/js/user-controller.js"></script>
+<script src="static/js/config.js"></script>
+<script src="static/js/main.js"></script>
+
+</html>

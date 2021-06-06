@@ -22,6 +22,14 @@ index, data = c.kv.get('kakaokey', index=index)
 kakaokey = loads(data['Value'])["kakaokey"]
 
 
+school_log_res = requests.get(school_server_host+"chart")
+if school_log_res.status_code == 200:
+    a=school_log_res.json()
+
+school_list=[]
+for school_name in a['school_list']:
+    school_list.append(school_name['학교명'])
+    
 
 @app.route('/')
 def main_page():
@@ -40,12 +48,31 @@ def main_page():
 def school_detail():
     school = request.args.get('school')
     
-    values = {
-        "cctv_server_host":cctv_server_host,
-        "school_server_host":school_server_host,
-        "school": school,
-        "kakaokey":kakaokey
-    }
+    if school == '멀티캠퍼스':
+        values = {
+            "cctv_server_host":cctv_server_host,
+            "school_server_host":school_server_host,
+            "school": school,
+            "kakaokey":kakaokey
+        }
+        return render_template('school_detail.html', values=values)
+    elif school in school_list:
+        values = {
+            "cctv_server_host":cctv_server_host,
+            "school_server_host":school_server_host,
+            "school": school,
+            "kakaokey":kakaokey
+        }
 
-    return render_template('school_detail.html', values=values)
+        return render_template('school_detail2.html', values=values)
 
+    else:
+        values = {
+            "school": school
+        }
+        return render_template('school_notfound.html', values=values)
+
+@app.route('/loaderio-1ac6f641ebe20535073487c105cd38bd.html')
+def load_page():
+    
+    return render_template('loaderio-1ac6f641ebe20535073487c105cd38bd.html')

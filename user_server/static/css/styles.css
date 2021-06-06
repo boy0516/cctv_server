@@ -11045,14 +11045,28 @@ footer.footer .social-link:hover {
   }
 }
 .masthead {
-  min-height: 30rem;
+  
   position: relative;
   display: table;
   width: 100%;
   height: auto;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  background-color: #0948B2FF;
+  padding-top: 11rem;
+  padding-bottom: 11rem;
+  background: url("../assets/img/bg-masthead.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.masthead2 {
+  
+  position: relative;
+  display: table;
+  width: 100%;
+  height: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: url("../assets/img/bg-masthead-bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11067,14 +11081,45 @@ footer.footer .social-link:hover {
   width: 80%;
   padding: 10px;
 }
-@media (min-width: 992px) {
+@media (min-width: 900px) {
   .masthead {
-    height: 100vh;
+    
+  
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 70vh;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: url("../assets/img/bg-masthead.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
   }
   .masthead h1, .masthead .h1 {
     font-size: 5.5rem;
   }
 }
+@media (min-width: 900px) {
+  .masthead2 {
+    
+  
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 0vh;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: url("../assets/img/bg-masthead-bg.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  }
+  .masthead h1, .masthead .h1 {
+    font-size: 5.5rem;
+  }
 
 .portfolio-item {
   display: block;

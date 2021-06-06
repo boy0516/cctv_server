@@ -37,7 +37,7 @@
 
     <meta charset="utf-8"/>
 
-    <title>1-Stylish Portfolio - Start Bootstrap Template</title>
+    
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}"/>
     <!-- Font Awesome icons (free version)-->
@@ -116,15 +116,7 @@
 <nav id="sidebar-wrapper" style="z-index: 2;">
     <ul class="sidebar-nav">
         <li class="sidebar-brand"><a href="#page-top">잡았다요놈</a></li>
-        <li class="sidebar-nav-item"><a href="#page-top">서비스 소개</a></li>
-        <li class="sidebar-nav-item"><a href="#about">학교폭력지수가 높은 TOP30 학교</a></li>
-        <li class="sidebar-nav-item"><a href="#services">학교폭력지수란?</a></li>
-        <li class="sidebar-nav-item"><a href="#portfolio">학교폭력지수가 낮은 학교 다운로드</a></li>
-        <li class="sidebar-nav-item"><a href="#contact">우리학교 학교폭력지수 검색하기</a></li>
-        <li class="sidebar-brand">
-            
-        </li>
-
+        <li class="sidebar-nav-item"><a href="javascript:window.close()">창닫기</a></li>
     </ul>
 </nav>
 
@@ -148,7 +140,7 @@
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                              src="{{ url_for('static', filename='img/undraw_posting_photo.svg') }}" alt="...">
                     </div>
-                    <p>{{ values.school }}는 AI 학교폭력 탐지 시스템 <b>잡았다 요놈!</b>의 관리를 받고있습니다.</p>
+                    <p><b>{{ values.school }}</b>는 AI 학교폭력 탐지 시스템 <b>잡았다 요놈!</b>의 관리를 받고있습니다.</p>
                 </div>
             </div>
 
@@ -159,7 +151,6 @@
                 </div>
                 <div class="card-body">
                     <div class="img-fluid px-3 px-sm-4 mt-3 mb-4" id="map" style="width: 50rem; height: 25rem; z-index: 1;"></div>
-
                 </div>
             </div>
 
@@ -167,13 +158,40 @@
     </div>
     <!-- Content Row -->
     <div class="row">
-         <!-- 개최횟수 -->
+        <!-- 학교폭력지수 -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div
+                                    class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                            >
+                                학교폭력지수
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div id="school_8" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- 학교폭력 심의위원회 개최 횟수 -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">개최횟수</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">학교폭력 심의위원회 개최 횟수</div>
                             <div id="school_1" class="h5 mb-0 font-weight-bold text-gray-800">
                             </div>
                         </div>
@@ -185,13 +203,13 @@
             </div>
         </div>
 
-         <!-- 심의건수 -->
+         <!-- 학교폭력 심의건수 -->
          <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">심의건수</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">학교폭력 심의건수</div>
                             <div id="school_2" class="h5 mb-0 font-weight-bold text-gray-800">
                             </div>
                         </div>
@@ -219,13 +237,13 @@
                 </div>
             </div>
         </div>
-         <!-- 학교폭력유형_계 -->
+         <!-- 학교폭력 발생건수 -->
          <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">학교폭력유형_계</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">학교폭력 발생건수</div>
                             <div id="school_4" class="h5 mb-0 font-weight-bold text-gray-800">
                             </div>
                         </div>
@@ -287,7 +305,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- 월간학폭탐지 -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -334,33 +352,7 @@
             </div>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div
-                                    class="text-xs font-weight-bold text-info text-uppercase mb-1"
-                            >
-                                학교폭력지수
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div id="school_8" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 
@@ -463,7 +455,7 @@
 
 <script
   type="text/javascript"
-  src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{values.kakao}}"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{values.kakaokey}}"
 ></script>
 
 <script>
@@ -639,6 +631,8 @@
 <script>
     // Set new default font family and font color to mimic Bootstrap's default styling
     // Pie Chart Example
+    function randomNum(min, max){ var randNum = Math.floor(Math.random()*(max-min+1)) + min; return randNum; }
+
     $.get("{{values.cctv_server_host}}log/count?cctv={{values.school}}",	// 서버가 필요한 정보를 같이 보냄.
         function (data2) {
             $("#assaulttext").html("폭행" + data2["assault"]);

@@ -158,9 +158,9 @@ class CctvLogCount(Resource):
         smoke = 0
 
         for logs in json_data:
-            if logs['situation'] == 'assault':
+            if logs['situation'] == 'assault' or logs['situation'] == '폭행':
                 assault += 1
-            if logs['situation'] == 'smoke':
+            if logs['situation'] == 'smoke' or logs['situation'] == '흡연':
                 smoke += 1
         
 
