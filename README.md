@@ -11,7 +11,7 @@ typora-copy-images-to: md_image
 
 2. S3에 저장되고나면 트리거로 람다가 동작하여 CCTV log DB로 ai 모델의 결과값이 로그로 저장됩니다.
 
-3. chool DB는 빅데이터에서 분석한 결과가 담긴 csv파일을 직접 넣어주었습니다.
+3. school DB는 빅데이터에서 분석한 결과가 담긴 csv파일을 직접 넣어주었습니다.
 
 4. log 정보와 학교폭력관련 정보는 CCTV API서버와 School API서버에서 restful api로 제공합니다.
 

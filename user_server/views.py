@@ -48,15 +48,7 @@ def main_page():
 def school_detail():
     school = request.args.get('school')
     
-    if school == '멀티캠퍼스':
-        values = {
-            "cctv_server_host":cctv_server_host,
-            "school_server_host":school_server_host,
-            "school": school,
-            "kakaokey":kakaokey
-        }
-        return render_template('school_detail.html', values=values)
-    elif school in school_list:
+    if school in school_list:
         values = {
             "cctv_server_host":cctv_server_host,
             "school_server_host":school_server_host,
